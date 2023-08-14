@@ -3,6 +3,7 @@ package com.mybalhub.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,14 +36,14 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/api/user/{requestedId}")
-	public String deleteUser(@PathVariable Long id) {
-		service.deletarUsuario(id);
-		return id + "Deletado com sucesso";
+	public void deleteUser(@PathVariable Long requestedId) {
+		service.deletarUsuario(requestedId);
 	}
 	
 	@PutMapping("/api/users")
-	public void updateUser(@RequestBody User user) {
-		service.atualizarUsuario(user);
+	public ResponseEntity<String> updateUser(@RequestBody User user) {
+		Long userId = user.getId();
+		return service.atualizarUsuario(user, userId);
 	}
 
 }

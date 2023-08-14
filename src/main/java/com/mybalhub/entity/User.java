@@ -17,19 +17,19 @@ public class User {
 	private String password;
 	
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 	
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 	
 	public void setId(Long id) {
